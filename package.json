@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/campe0n/passwordManager#readme",
   "dependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.2.1",
+    "dotenv": "^10.0.0"
   }
 }
