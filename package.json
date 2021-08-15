@@ -22,6 +22,8 @@
   "homepage": "https://github.com/campe0n/passwordManager#readme",
   "dependencies": {
     "concurrently": "^6.2.1",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.1"
   }
 }
