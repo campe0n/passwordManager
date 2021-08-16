@@ -2,15 +2,53 @@ const db = require("./connection");
 const { User, Passwords } = require("../models");
 
 db.once("open", async () => {
+  await Passwords.deleteMany();
+
+  const passwords = await Passwords.insertMany([
+    {
+      category: "Social Media",
+      website: "Instagram",
+      password: "Instapassword",
+    },
+    {
+      category: "Social Media",
+      website: "Facebook",
+      password: "facebookpassword",
+    },
+    {
+      category: "Entertainment",
+      website: "Netflix",
+      password: "netflixpassword",
+    },
+    {
+      category: "Entertainment",
+      website: "Hulu",
+      password: "hulupasswordl",
+    },
+    {
+      category: "Finance",
+      website: "Chase Bank",
+      password: "chasepassword",
+    },
+  ]);
+
+  console.log("Passwords seeded");
+
   await User.deleteMany();
 
-  const User = await User.create({
-    firstName: "Stewie",
+  await User.create({
+    firtName: "Stewie",
     lastName: "Griffin",
-    email: "stewie@testemail.com",
-    password: "password",
+    email: "stewie@testmail.com",
+    passsword: "password",
+    passwords: [
+      {
+        passwords: passwords,
+      },
+    ],
   });
-  console.log("Users seeded");
+
+  console.log("User seeded");
 
   process.exit();
 });

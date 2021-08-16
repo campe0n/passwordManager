@@ -1,4 +1,4 @@
 const User = require("./User");
-const Password = require("./Password");
+const Passwords = require("./Passwords");
 
-module.exports = { User, Password };
+module.exports = { User, Passwords };
