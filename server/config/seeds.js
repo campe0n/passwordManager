@@ -32,7 +32,7 @@ db.once("open", async () => {
     },
   ]);
 
-  console.log("Passwords seeded");
+  console.log("passwords seeded!");
 
   await User.deleteMany();
 
@@ -43,7 +43,11 @@ db.once("open", async () => {
     passsword: "password",
     passwords: [
       {
-        passwords: passwords,
+        passwords: [passwords[0]._id],
+        passwords: [passwords[1]._id],
+        passwords: [passwords[2]._id],
+        passwords: [passwords[3]._id],
+        passwords: [passwords[4]._id],
       },
     ],
   });

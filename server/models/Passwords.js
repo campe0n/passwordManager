@@ -20,6 +20,6 @@ const passwordsSchema = new Schema({
   },
 });
 
-const Passwords = mongoose.model("Passwords", passwordsSchema);
+const Passwords = mongoose.model("passwords", passwordsSchema);
 
 module.exports = Passwords;
