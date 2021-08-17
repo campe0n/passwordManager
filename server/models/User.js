@@ -27,7 +27,7 @@ const userSchema = new Schema({
   passwords: {
     type: Schema.Types.ObjectId,
     ref: "Passwords",
-    required: true,
+    required: false,
   },
 });
 
