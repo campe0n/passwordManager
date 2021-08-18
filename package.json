@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "@material-ui/icons": "^4.11.2"
+    "@material-ui/icons": "^4.11.2",
+    "apollo-server-express": "^3.1.2",
+    "nodemon": "^2.0.12"
   }
 }
