@@ -4,26 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node index.js",
     "watch": "nodemon index.js",
     "seed": "node config/seeds.js"
   },
-  "proxy": "https://localhost:4000/",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "apollo-server-express": "^2.11.0",
-=======
     "@material-ui/core": "^4.12.3",
-    "apollo-server-express": "^3.1.2",
->>>>>>> 7795960fc7ce34aa789d578fef38bc4f0ef3a5dd
+    "apollo-server-express": "^2.11.0",
     "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.0",
-    "concurrently": "^6.2.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
