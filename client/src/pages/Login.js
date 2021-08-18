@@ -7,7 +7,9 @@ import Auth from '../utils/auth';
 
 
 const Login = (props) => {
-
+return(
+    <div>Login</div>
+)
 }
 
 export default Login;
