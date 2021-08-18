@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Passwords } = require("../models");
-// const { signToken } = require("../utils/auth");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -20,8 +20,8 @@ const resolvers = {
     },
   },
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+    addUser: async (parent, { firstName, lastName, email, password }) => {
+      const user = await User.create({ firstName, lastName, email, password });
       const token = signToken(user);
 
       return { token, user };
@@ -48,7 +48,7 @@ const resolvers = {
         throw new AuthenticationError("Incorrect credentails");
       }
 
-      const token = signTOken(user);
+      const token = signToken(user);
 
       return { token, user };
     },
