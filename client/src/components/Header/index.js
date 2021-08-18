@@ -1,9 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Auth from '../../utils/auth';
 
-const Header = () => {
 
-}
+const header = {
+    display: "flex",
+    justifyContent: "center",
+    color: "white",
+    backgroundColor: "#3F51B5",
+    padding: "30px",
+    fontFamily: "Arial",
+    border: "1px grey solid", 
+    borderRadius: "10px 10px 10px 10px"
+  };
 
-export default Header
+  const Header = ()  => {
+      return (
+          <header> 
+              <h1 style={header}>Password Manager</h1>
+
+          </header>
+      )
+
+  }
+
+
+  export default Header
+
+
