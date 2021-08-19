@@ -42,9 +42,8 @@ const client = new ApolloClient({
 
 function App() {
   return (
-feature/newhomepage
-    <Home />
-  
+// feature/newhomepage
+//     <Home />
 
     <ApolloProvider client={client}>
       <Router>
