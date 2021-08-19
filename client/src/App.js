@@ -42,6 +42,10 @@ const client = new ApolloClient({
 
 function App() {
   return (
+feature/newhomepage
+    <Home />
+  
+
     <ApolloProvider client={client}>
       <Router>
       <Header />
@@ -70,6 +74,7 @@ function App() {
         </Container>
       </Router>
     </ApolloProvider>
+
   );
 }
 
