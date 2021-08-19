@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-
+import Dashboard from '../components/Dashboard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +49,8 @@ export default function ButtonAppBar() {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
+
+      <Dashboard categories='I do not know' title='title'></Dashboard>
     </div>
   );
 }
