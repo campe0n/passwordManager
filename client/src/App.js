@@ -40,7 +40,8 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <Signup/>
+    <Home />
+  
   );
 }
 
