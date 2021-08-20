@@ -34,7 +34,31 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
+
     },
+
+    addPassword: async (parent, args, context) => {
+     if (context.user) {
+       //, create a password object
+        const password = await Passwords.create({
+          category,
+          website,
+          password
+        })
+
+       //, get saved password object
+       //, find an update.userbyId, push password_id into passwords
+       //, return new password object
+       return Passwords.findByIdAndUpdate(context.passwords._id), args, {
+      new: true, 
+    };
+  }
+
+  throw new AuthenticationError("Not logged in. Data Rejected");
+
+},
+
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
