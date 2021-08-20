@@ -7,14 +7,14 @@ const typeDefs = gql`
     lastName: String
     email: String
     password: String
-    passwords: [Passwords]
+    passwords: [Password]
   }
 
-  type Passwords {
+  type Password {
     _id: ID
-    category: String
-    website: String
-    password: String
+    category: String!
+    website: String!
+    password: String!
   }
 
   type Auth {
@@ -24,8 +24,8 @@ const typeDefs = gql`
 
   type Query {
     user: User
-    passwords: [Passwords]
-    password(_id: ID!): Passwords
+    passwords: [Password]
+    password(_id: ID!): Password
   }
 
   type Mutation {
@@ -35,13 +35,25 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+
+
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
     ): User
-    login(email: String!, password: String!): Auth
+
+    login(
+      email: String! 
+      password: String!
+      ): Auth
+
+    addPassword(
+      category: String!
+      website: String!
+      password: String!
+    ): Password
   }
 `;
 
