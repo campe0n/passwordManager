@@ -1,21 +1,7 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../utils/mutations';
+import React, { useState} from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 
-// import Auth from '../utils/auth';
-
-
-// const Login = (props) => {
-// return(
-//     <div>Login</div>
-// )
-// }
-
-// export default Login;
-
-
-import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,6 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
+import Auth from '../utils/auth';
 
 function Copyright() {
   return (
@@ -61,8 +49,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function Login(props) {
   const classes = useStyles();
+
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -74,7 +98,7 @@ export default function Login(props) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleFormSubmit} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -85,6 +109,8 @@ export default function Login(props) {
             name="email"
             autoComplete="email"
             autoFocus
+            value={formState.email}
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -96,6 +122,8 @@ export default function Login(props) {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={formState.password}
+            onChange={handleChange}
           />
 
           <Button
