@@ -27,11 +27,13 @@ const userSchema = new Schema({
     trim: true,
     minlength: 5,
   },
-  passwords: {
-    type: Schema.Types.ObjectId,
-    ref: "Passwords",
-    required: false,
-  },
+  passwords: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Passwords",
+      required: false,
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
