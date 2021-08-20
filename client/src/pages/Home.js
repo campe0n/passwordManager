@@ -38,7 +38,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      {/* <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
@@ -48,7 +48,7 @@ export default function ButtonAppBar() {
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
 
       <Dashboard categories='I do not know' title='title'></Dashboard>
     </div>
