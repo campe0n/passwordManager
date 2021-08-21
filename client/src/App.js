@@ -14,7 +14,10 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Container from '@material-ui/core/Container';
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/Dashboard';
+import CreatePassword from './pages/CreatePassword'
+
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -62,8 +65,8 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
-            <Route exact path="/">
-              {/* <Profile /> */}
+            <Route exact path="/createPassword">
+              <CreatePassword />
             </Route>
             <Route exact path="/">
               {/* <Profile /> */}

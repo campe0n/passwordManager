@@ -32,8 +32,12 @@ const Dashboard = (categories, title, id) => {
         return <h3>You have No Passwords</h3>;
       }
 
+      // <div>
+      //   <button><Link>Create Password</Link></button>
+      // </div>
   return (
     <div style={divCard}>
+      
       <h2>Categories</h2>
       {categories &&
         categories.map((category) => (
