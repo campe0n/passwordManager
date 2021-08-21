@@ -15,7 +15,7 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in!");
     },
-    passwords: async (parent, { _id }, context) => {
+    passwords: async (parent, args, context) => {
       if (context.user) {
         return await Passwords.find();
       }
