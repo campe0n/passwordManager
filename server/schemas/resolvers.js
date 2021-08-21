@@ -15,13 +15,16 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    passwords: async () => {
-      return await Passwords.find();
+    passwords: async (parent, args, context) => {
+      if (context.user) {
+        return await Passwords.find();
+      }
+      throw new AuthenticationError("Not logged in!");
     },
   },
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+    addUser: async (parent, { firstName, lastName, email, password }) => {
+      const user = await User.create({ firstName, lastName, email, password });
       const token = signToken(user);
 
       return { token, user };
@@ -40,7 +43,7 @@ const resolvers = {
     addPassword: async (parent, args, context) => {
      if (context.user) {
        //, create a password object
-        const password = await Passwords.create({
+        const newPassword = await Passwords.create({
           category: category,
           website: website,
           password: password,
@@ -48,16 +51,55 @@ const resolvers = {
       //, get saved password object
       //, find an update.userbyId, push password_id into passwords
         await User.findOneAndUpdate(context.user._id, {
-        $push: { passwords: password._id },
+        $push: { passwords: newPassword },
       });
        //, return new password object
-      return password;
+      return newPassword;
     }
 
       throw new AuthenticationError("Not logged in. Data Rejected");
 },
 
 
+      updatePassword: async (
+      parent,
+      { _id, category, website, password },
+      context
+    ) => {
+      if (context.user) {
+        return await Passwords.findOneAndUpdate(
+          _id,
+          {
+            category: category,
+            website: website,
+            password: password,
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("Not logged in!");
+    },
+    deletePassword: async (
+      parent,
+      { _id, category, website, password },
+      context
+    ) => {
+      if (context.user) {
+        const delPassword = await Passwords.findOneAndDelete(_id, {
+          category: category,
+          website: website,
+          password: password,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { passwords: delPassword._id } }
+        );
+
+        return delPassword;
+      }
+      throw new AuthenticationError("Not logged in!");
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -71,7 +113,7 @@ const resolvers = {
         throw new AuthenticationError("Incorrect credentails");
       }
 
-      const token = signTOken(user);
+      const token = signToken(user);
 
       return { token, user };
     },
@@ -79,3 +121,4 @@ const resolvers = {
 };
 
 module.exports = resolvers;
+
