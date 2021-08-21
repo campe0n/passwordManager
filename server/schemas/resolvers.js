@@ -13,10 +13,13 @@ const resolvers = {
         return user;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in!");
     },
-    passwords: async () => {
-      return await Passwords.find();
+    passwords: async (parent, args, context) => {
+      if (context.user) {
+        return await Passwords.find();
+      }
+      throw new AuthenticationError("Not logged in!");
     },
   },
   Mutation: {
