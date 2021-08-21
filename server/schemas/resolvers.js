@@ -41,21 +41,20 @@ const resolvers = {
      if (context.user) {
        //, create a password object
         const password = await Passwords.create({
-          category,
-          website,
-          password
-        })
-
-       //, get saved password object
-       //, find an update.userbyId, push password_id into passwords
+          category: category,
+          website: website,
+          password: password,
+        });
+      //, get saved password object
+      //, find an update.userbyId, push password_id into passwords
+        await User.findOneAndUpdate(context.user._id, {
+        $push: { passwords: password._id },
+      });
        //, return new password object
-       return Passwords.findByIdAndUpdate(context.passwords._id), args, {
-      new: true, 
-    };
-  }
+      return password;
+    }
 
-  throw new AuthenticationError("Not logged in. Data Rejected");
-
+      throw new AuthenticationError("Not logged in. Data Rejected");
 },
 
 
