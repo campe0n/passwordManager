@@ -26,7 +26,7 @@ const container = {
   padding: "1px 1px 1px 2px",
 };
 
-const Dashboard = (categories, title, id) => {
+const Dashboard = (categories, title) => {
 
     if (!categories.length) {
         return <h3>You have No Passwords</h3>;

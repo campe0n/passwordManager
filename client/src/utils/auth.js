@@ -2,7 +2,7 @@ import decode from 'jwt-decode';
 
 class AuthService {
       // get user data from JSON web token by decoding it
-  getCategory() {
+  getUser() {
     return decode(this.getToken());
   }
 
