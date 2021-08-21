@@ -18,17 +18,22 @@ const userSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    unique: true,
+    match: [/.+@.+\..+/, "Must match an email address"],
   },
   password: {
     type: String,
     required: true,
     trim: true,
+    minlength: 5,
   },
-  passwords: {
-    type: Schema.Types.ObjectId,
-    ref: "Passwords",
-    required: false,
-  },
+  passwords: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Passwords",
+      required: false,
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
