@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const divCard = {
   display: "flex",
@@ -49,14 +49,6 @@ const Dashboard = (categories, title) => {
   );
 };
 
-{
-  /* <div style={card}>
-<div style={container}>
-  <h4>
-    <b>Social Media</b>
-  </h4>
-</div>
-</div> */
-}
+
 
 export default Dashboard;
