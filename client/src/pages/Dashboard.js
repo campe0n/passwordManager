@@ -1,5 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+
+import PasswordList from "../components/PasswordList";
+import PasswordForm from "../components/PasswordForm";
+
+import { QUERY_PASSWORDS } from "../utils/queries";
 
 const divCard = {
   display: "flex",
@@ -26,26 +31,26 @@ const container = {
   padding: "1px 1px 1px 2px",
 };
 
-const Dashboard = (categories, title) => {
-
-    if (!categories.length) {
-        return <h3>You have No Passwords</h3>;
-      }
+const Dashboard = () => {
+  const { loading, data } = useQuery(QUERY_PASSWORDS);
+  const passwords = data?.passwords || [];
 
   return (
-    <div style={divCard}>
-      <h2>Categories</h2>
-      {categories &&
-        categories.map((category) => (
-          <div key={category._id} style={card}>
-            <div style={container}>
-              <h4>
-                <b>{category.name}</b>
-              </h4>
-            </div>
-          </div>
-        ))}
-    </div>
+    <main>
+      <div>
+        <div>
+          <button>Create password</button>
+        </div>
+
+        <div>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <PasswordList passwords={passwords} />
+          )}
+        </div>
+      </div>
+    </main>
   );
 };
 
