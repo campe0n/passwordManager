@@ -5,28 +5,30 @@ import Auth from "../../utils/auth";
 
 const header = {
   backgroundColor: "#3F51B5",
-  borderRadius: "10px 10px 10px 10px",
+  margin: "0 auto"
+
+  
 };
 
 const title = {
   display: "flex",
   justifyContent: "center",
   color: "white",
-  // backgroundColor: "#3F51B5",
-  // padding: "30px",
-  fontFamily: "Arial",
-  // border: "1px grey solid",
+  paddingTop: "10px",
+  fontFamily: "Arial"
+  
 };
 
 const divBtn = {
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "center"
 };
 
 const btn = {
   backgroundColor: "#3F51B5",
   margin: "3rem",
   borderRadius: "10px 10px 10px 10px",
+  padding: ".5rem",
 };
 
 const linkBtn = {

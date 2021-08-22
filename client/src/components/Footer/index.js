@@ -8,9 +8,10 @@ import Box from  '@material-ui/core/Box';
 
 const footer = {
   position: 'sticky',
-  bottom: 0,
+  bottom: "0",
   backgroundColor: '#3F51B5',
-  borderRadius: "10px 10px 10px 10px"
+  margin: "0 auto",
+  
   
 }
 
