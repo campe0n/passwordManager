@@ -55,6 +55,22 @@ const Color = {
     fontSize: '20px'
 }
 
+const dashDiv = {
+  display: "flex",
+  justifyContent: 'center',
+  marginTop: '3rem',
+}
+
+const dashBtn = {
+  backgroundColor: '#03fcad',
+  width: '150px',
+  borderRadius: "10px 10px 10px 10px",
+  margin: '20px',
+  padding: '20px',
+  fontSize: '20px'
+
+}
+
 const CreatePassword = () => {
   return (
     <div style={formDiv}>
@@ -69,8 +85,10 @@ const CreatePassword = () => {
         Create Password:
           <input style={inputField} type="password" placeholder="password"/>
           </div>
-          <button style={btn} type="submit">Create</button>
+          <button style={btn} type="submit">Submit</button>
 
+
+        
         {/* <div>
           <button style={DeleteBtn} >Delete</button>
         </div> */}
@@ -81,6 +99,10 @@ const CreatePassword = () => {
             </div>
           )} */}
       </form>
+
+      <div style={dashDiv}>
+          <button style={dashBtn}><Link style={{ color: "Black",}} to='dashboard'>Dashboard</Link></button>
+        </div>
       {/* //   ) : ( */}
       {" "}
       <p>
