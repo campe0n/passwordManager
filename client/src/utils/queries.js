@@ -10,3 +10,14 @@ export const QUERY_PASSWORDS = gql`
     }
   }
 `;
+
+export const QUERY_PASSWORD = gql`
+  query singlePassword($passwordId: ID!) {
+    password(passwordId: $passwordId) {
+      _id
+      website
+      category
+      password
+    }
+  }
+`;
