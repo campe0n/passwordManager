@@ -10,6 +10,7 @@ const header = {
   
 };
 
+
 const title = {
   display: "flex",
   justifyContent: "center",
@@ -29,7 +30,17 @@ const btn = {
   margin: "3rem",
   borderRadius: "10px 10px 10px 10px",
   padding: ".5rem",
+  
 };
+
+const logoutBtn = {
+    backgroundColor: "#3F51B5",
+    color: "white",
+    fontSize: "25px",
+    margin: "3rem",
+    borderRadius: "10px 10px 10px 10px",
+    padding: ".5rem",  
+}
 
 const linkBtn = {
   color: "white",
@@ -48,7 +59,7 @@ const Header = () => {
       <h1 style={title}>Password Manager</h1>
       <div style={divBtn}>
         {Auth.loggedIn() ? (
-          <button style={btn} onClick={logout}>
+          <button style={logoutBtn} onClick={logout}>
             Logout
           </button>
         ) : (

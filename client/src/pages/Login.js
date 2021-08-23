@@ -97,7 +97,7 @@ export default function Login(props) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        {data ? (
+        {data || Auth.loggedIn() ? (
           <p>
             Success! You may now head <Link to="/dashboard">back to the dashboard.</Link>
           </p>

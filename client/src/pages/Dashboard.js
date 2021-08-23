@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const divCard = {
   display: "flex",
@@ -27,17 +27,38 @@ const container = {
 };
 
 const Dashboard = (categories, title) => {
+  const noPassword = {
+    display: "flex",
+    justifyContent: "space-evenly",
+  };
 
-    if (!categories.length) {
-        return <h3>You have No Passwords</h3>;
-      }
+  const btn = {
+    backgroundColor: "#03fcad",
+    margin: "1rem",
+    borderRadius: "10px 10px 10px 10px",
+    padding: "1rem",
+  };
 
-      // <div>
-      //   <button><Link>Create Password</Link></button>
-      // </div>
+  const linkBtn = {
+    color: "black"
+  }
+
+  if (!categories.length) {
+    return (
+      <div style={noPassword}>
+        <div>
+          <h2>You have No Passwords Yet!</h2>
+        </div>
+
+        <button style={btn}>
+          <Link style={linkBtn} to="/createPassword">Create Password</Link>
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div style={divCard}>
-      
       <h2>Categories</h2>
       {categories &&
         categories.map((category) => (
@@ -52,7 +73,5 @@ const Dashboard = (categories, title) => {
     </div>
   );
 };
-
-
 
 export default Dashboard;
