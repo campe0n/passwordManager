@@ -48,20 +48,6 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     addPassword: async (parent, { _id, website, password }, context) => {
-      // if (context.user) {
-      //   //, create a password object
-      //   const newPassword = await Passwords.create({
-      //     website: website,
-      //     password: password,
-      //   });
-      //   //, get saved password object
-      //   //, find an update.userbyId, push password_id into passwords
-      //   await User.findOneAndUpdate(context.user._id, {
-      //     $push: { passwords: newPassword._id },
-      //   });
-      //   //, return new password object
-      //   return newPassword;
-      // }
       if (context.user) {
         const newPassword = await Passwords.create({
           website: website,
