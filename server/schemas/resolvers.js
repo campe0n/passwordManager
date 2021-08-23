@@ -41,11 +41,10 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    addPassword: async (parent, { category, website, password }, context) => {
+    addPassword: async (parent, { website, password }, context) => {
       if (context.user) {
         //, create a password object
         const newPassword = await Passwords.create({
-          category: category,
           website: website,
           password: password,
         });

@@ -25,3 +25,12 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_PASSWORD = gql `
+   mutation addPassword($website: String!, $password: String!){
+     addPassword(website: $website, password: $password) {
+         website
+         password
+     }
+   }
+   `

@@ -47,7 +47,6 @@ const typeDefs = gql`
 
     addPassword(
       _id: ID
-      category: String!
       website: String!
       password: String!
     ): Password
