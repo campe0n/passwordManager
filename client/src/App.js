@@ -1,59 +1,55 @@
-import React from 'react';
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Container from '@material-ui/core/Container';
-import Dashboard from './pages/Dashboard';
-import CreatePassword from './pages/CreatePassword'
-
-
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Container from "@material-ui/core/Container";
+import Dashboard from "./pages/Dashboard";
+import CreatePassword from "./pages/CreatePassword";
+import PasswordPage from "./pages/PasswordPage";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
 
-  const token = localStorage.getItem('id_token');
- 
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
 
 const client = new ApolloClient({
-  
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-
 function App() {
   return (
-// feature/newhomepage
-//     <Home />
+    // feature/newhomepage
+    //     <Home />
 
     <ApolloProvider client={client}>
-      <Router>
       <Header />
-      <Container component="main">  
+      <Router>
+        <Container component="main">
           <div className="container">
-          <Route exact path="/dashboard">
+            <Route exact path="/dashboard">
               <Dashboard />
             </Route>
             <Route exact path="/">
@@ -68,18 +64,14 @@ function App() {
             <Route exact path="/createPassword">
               <CreatePassword />
             </Route>
-            <Route exact path="/">
-              {/* <Profile /> */}
-            </Route>
-            <Route exact path="/">
-              {/* <SingleThought /> */}
+            <Route exact path="/passwords/:passwordsId">
+              <PasswordPage />
             </Route>
           </div>
-          <Footer />
         </Container>
       </Router>
+      <Footer />
     </ApolloProvider>
-
   );
 }
 

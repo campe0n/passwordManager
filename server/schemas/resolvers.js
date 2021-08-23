@@ -21,6 +21,9 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in!");
     },
+    password: async (parent, { passwordId }) => {
+      return Passwords.findOne({ _id: passwordId });
+    },
   },
   Mutation: {
     addUser: async (parent, { firstName, lastName, email, password }) => {
