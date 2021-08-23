@@ -44,7 +44,10 @@ const typeDefs = gql`
       password: String
     ): User
 
-    login(email: String!, password: String!): Auth
+    login(
+      email: String!, 
+      password: String!
+      ): Auth
 
     addPassword(
       _id: ID
