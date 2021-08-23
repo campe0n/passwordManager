@@ -25,8 +25,7 @@ const typeDefs = gql`
   type Query {
     user: User
     passwords: [Password]
-    findPasswordById(_id: ID!): Password
-    password: Password
+    password(passwordId: ID!): Password
   }
 
   type Mutation {
