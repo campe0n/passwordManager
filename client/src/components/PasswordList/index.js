@@ -41,8 +41,9 @@ const PasswordList = ({ passwords }) => {
                 <h4>{password.website}</h4>
                 <h4>{password.password}</h4>
                 <Link to={`passwords/${password._id}`}>
-                  Click to view, update or delete password.
+                  <button>Update</button>
                 </Link>
+                <button>Delete</button>
               </div>
             </div>
           ))}

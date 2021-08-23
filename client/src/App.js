@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import Container from "@material-ui/core/Container";
 import Dashboard from "./pages/Dashboard";
 import CreatePassword from "./pages/CreatePassword";
+import PasswordPage from "./pages/PasswordPage";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -44,8 +45,8 @@ function App() {
     //     <Home />
 
     <ApolloProvider client={client}>
+      <Header />
       <Router>
-        <Header />
         <Container component="main">
           <div className="container">
             <Route exact path="/dashboard">
@@ -63,11 +64,8 @@ function App() {
             <Route exact path="/createPassword">
               <CreatePassword />
             </Route>
-            <Route exact path="/">
-              {/* <Profile /> */}
-            </Route>
-            <Route exact path="/">
-              {/* <SingleThought /> */}
+            <Route exact path="/passwords/:passwordsId">
+              <PasswordPage />
             </Route>
           </div>
         </Container>
