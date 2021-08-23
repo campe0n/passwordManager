@@ -15,6 +15,7 @@ const PasswordList = ({ passwords }) => {
           passwords.map((password) => (
             <div key={password._id}>
               <h4>{password.website}</h4>
+              <h4>{password.password}</h4>
               <Link to={`passwords/${password._id}`}>View password.</Link>
             </div>
           ))}
