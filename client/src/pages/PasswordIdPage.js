@@ -12,11 +12,15 @@ const PasswordIdPage = () => {
     variables: { passwordId: passwordId },
   });
 
-  const passwords = data?.passwords || [];
+  const passwords = data?.password || [];
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      {loading ? <div>Loading...</div> : <PasswordId passwords={passwords} />}
+      <PasswordId passwords={passwords} />
     </div>
   );
 };
