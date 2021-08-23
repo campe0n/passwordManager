@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { useQuery } from "@apollo/client";
+import { QUERY_PASSWORDS } from "../utils/queries";
+
+import PasswordList from "../components/PasswordList";
+
 const styles = {
   divCard: {
     display: "flex",
@@ -40,37 +45,35 @@ const styles = {
 //   }
 
 const Dashboard = () => {
-  const { loading, data } = useQuery(QUERY_PASSWORD);
-  if (!categories.length) {
-    return (
-      <div style={styles.noPassword}>
-        <div>
-          <h2>You have No Passwords Yet!</h2>
-        </div>
+  const { loading, data } = useQuery(QUERY_PASSWORDS);
+  const passwords = data?.passwords || [];
 
+  return (
+    <main>
+      <div>
         <button style={styles.btn}>
           <Link style={styles.linkBtn} to="/createPassword">
             Create Password
           </Link>
         </button>
-      </div>
-    );
-  }
 
-  return (
-    <div style={styles.divCard}>
-      <h2>Categories</h2>
-      {categories &&
-        categories.map((category) => (
-          <div key={category._id} style={styles.card}>
-            <div style={styles.container}>
-              <h4>
-                <b>{category.name}</b>
-              </h4>
-            </div>
-          </div>
-        ))}
-    </div>
+        <div>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <PasswordList passwords={passwords} />
+          )}
+        </div>
+      </div>
+      );
+      <div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <PasswordList passwords={passwords} />
+        )}
+      </div>
+    </main>
   );
 };
 
