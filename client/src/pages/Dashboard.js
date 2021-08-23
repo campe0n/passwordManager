@@ -40,7 +40,10 @@ const Dashboard = () => {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <PasswordList passwords={passwords} />
+          <PasswordList
+            passwords={passwords}
+            title="Here is a list of your passwords..."
+          />
         )}
       </div>
     </main>

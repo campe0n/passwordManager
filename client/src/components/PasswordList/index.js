@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 const styles = {
@@ -34,7 +35,7 @@ const PasswordList = ({ passwords }) => {
     <div>
       <div style={styles.divCard}>
         {passwords &&
-          passwords.map((password) => {
+          passwords.map((password) => (
             <div key={password._id} style={styles.card}>
               <div style={styles.container}>
                 <h4>{password.website}</h4>
@@ -43,8 +44,8 @@ const PasswordList = ({ passwords }) => {
                   Click to view, update or delete password.
                 </Link>
               </div>
-            </div>;
-          })}
+            </div>
+          ))}
       </div>
     </div>
   );
