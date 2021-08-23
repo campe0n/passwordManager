@@ -1,5 +1,9 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import PasswordList from "../components/PasswordList";
+
+import { QUERY_PASSWORDS } from "../utils/queries";
 
 const divCard = {
   display: "flex",
@@ -26,33 +30,43 @@ const container = {
   padding: "1px 1px 1px 2px",
 };
 
-const Dashboard = (categories, title) => {
+const Dashboard = () => {
+  const { loading, data } = useQuery(QUERY_PASSWORDS);
+  const passwords = data?.passwords || [];
 
-    if (!categories.length) {
-        return <h3>You have No Passwords</h3>;
-      }
-
-      // <div>
-      //   <button><Link>Create Password</Link></button>
-      // </div>
   return (
-    <div style={divCard}>
-      
-      <h2>Categories</h2>
-      {categories &&
-        categories.map((category) => (
-          <div key={category._id} style={card}>
-            <div style={container}>
-              <h4>
-                <b>{category.name}</b>
-              </h4>
-            </div>
-          </div>
-        ))}
-    </div>
+    <main>
+      <div>
+        <button>
+          <Link to="/createpassword">Create Password</Link>
+        </button>
+      </div>
+
+      <div>
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          <PasswordList passwords={passwords} />
+        )}
+      </div>
+    </main>
   );
 };
+// return (
+//   <div style={divCard}>
 
-
+//     <h2>Categories</h2>
+//     {categories &&
+//       categories.map((category) => (
+//         <div key={category._id} style={card}>
+//           <div style={container}>
+//             <h4>
+//               <b>{category.name}</b>
+//             </h4>
+//           </div>
+//         </div>
+//       ))}
+//   </div>
+// );
 
 export default Dashboard;
