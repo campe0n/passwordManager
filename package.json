@@ -21,7 +21,13 @@
   },
   "homepage": "https://github.com/campe0n/passwordManager#readme",
   "dependencies": {
+<<<<<<< HEAD
     "concurrently": "^6.2.1",
     "graphql": "^15.5.1"
+=======
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.2.1",
+    "send": "^0.17.1"
+>>>>>>> develop
   }
 }
