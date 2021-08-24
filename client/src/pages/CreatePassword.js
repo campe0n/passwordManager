@@ -7,9 +7,10 @@ import { ADD_PASSWORD } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const formDiv = {
-  backgroundColor: "#3F51B5",
+  // backgroundColor: "#3F51B5",
   borderRadius: "100px 100px 100px 100px",
   paddingBottom: "80px",
+  margin: "20px"
 };
 
 const Form = {
@@ -92,11 +93,11 @@ const CreatePassword = ({ _id }) => {
   };
 
   return (
-    <div style={formDiv}>
+    <div className='formDiv' style={formDiv}>
       <h4 style={Header}>Create Password</h4>
       {Auth.loggedIn() ? (
-        <form style={Form} onSubmit={handleFormSubmit}>
-          <div style={Color}>
+        <form className='Form' style={Form} onSubmit={handleFormSubmit}>
+          <div className="Color" style={Color}>
             website:
             <input
               style={inputField}
@@ -106,7 +107,7 @@ const CreatePassword = ({ _id }) => {
               onChange={(event) => setWebsite(event.target.value)}
             />
           </div>
-          <div style={Color}>
+          <div className="Color" style={Color}>
             Create Password:
             <input
               style={inputField}
