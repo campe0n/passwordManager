@@ -51,7 +51,7 @@ const resolvers = {
         //, get saved password object
         //, find an update.userbyId, push password_id into passwords
         await User.findOneAndUpdate(context.user._id, {
-          $push: { passwords: newPassword },
+          $push: { passwords: newPassword._id },
         });
         //, return new password object
         return newPassword;

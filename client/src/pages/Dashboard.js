@@ -34,6 +34,8 @@ const Dashboard = () => {
             Create Password
           </Link>
         </button>
+        <h2>{passwords.website}</h2>
+        <h2>{passwords.password}</h2>
       </div>
 
       <div>

@@ -32,22 +32,20 @@ const PasswordList = ({ passwords }) => {
   }
 
   return (
-    <div>
-      <div style={styles.divCard}>
-        {passwords &&
-          passwords.map((password) => (
-            <div key={password._id} style={styles.card}>
-              <div style={styles.container}>
-                <h4>{password.website}</h4>
-                <h4>{password.password}</h4>
-                <Link to={`passwords/${password._id}`}>
-                  <button>Update</button>
-                </Link>
-                <button>Delete</button>
-              </div>
+    <div style={styles.divCard}>
+      {passwords &&
+        passwords.map((password) => (
+          <div key={password._id} style={styles.card}>
+            <div style={styles.container}>
+              <h4>{password.website}</h4>
+              <h4>{password.password}</h4>
+              <Link to={`passwords/${password._id}`}>
+                <button>Update</button>
+              </Link>
+              <button>Delete</button>
             </div>
-          ))}
-      </div>
+          </div>
+        ))}
     </div>
   );
 };
