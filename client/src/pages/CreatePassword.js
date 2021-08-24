@@ -81,10 +81,10 @@ const CreatePassword = ({ _id }) => {
 
     try {
       const data = await addPassword({
-        variables: {website, password },
+        variables: { _id, website, password },
       });
 
-      console.log("thiis data ", data);
+      console.log("this data ", data);
       setPassword("");
     } catch (err) {
       console.error(err);

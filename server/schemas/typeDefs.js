@@ -12,9 +12,8 @@ const typeDefs = gql`
 
   type Password {
     _id: ID
-    category: String!
-    website: String!
-    password: String!
+    website: String
+    password: String
   }
 
   type Auth {
@@ -25,7 +24,8 @@ const typeDefs = gql`
   type Query {
     user: User
     passwords: [Password]
-    password(passwordId: ID!): Password
+    password: Password
+    me: User
   }
 
   type Mutation {
@@ -45,11 +45,7 @@ const typeDefs = gql`
 
     login(email: String!, password: String!): Auth
 
-    addPassword(
-      _id: ID
-      website: String!
-      password: String!
-    ): Password
+    addPassword(_id: ID, website: String!, password: String!): Password
 
     updatePassword(
       _id: ID
