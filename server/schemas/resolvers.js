@@ -24,11 +24,19 @@ const resolvers = {
     password: async (parent, { passwordId }) => {
       return Passwords.findOne({ _id: passwordId });
     },
+feature/addreadme
+    passwords: async (parent, args, context) => {
+      if (context.user) {
+        return await Passwords.find();
+      }
+      throw new AuthenticationError("Not logged in!");
+
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
+develop
     },
   },
   Mutation: {
@@ -53,6 +61,27 @@ const resolvers = {
           website: website,
           password: password,
         });
+
+ feature/addreadme
+    addPassword: async (parent, args, context) => {
+     if (context.user) {
+       //, create a password object
+        const newPassword = await Passwords.create({
+          category: category,
+          website: website,
+          password: password,
+        });
+      //, get saved password object
+      //, find an update.userbyId, push password_id into passwords
+        await User.findOneAndUpdate(context.user._id, {
+        $push: { passwords: newPassword },
+      });
+       //, return new password object
+      return newPassword;
+    }
+
+      throw new AuthenticationError("Not logged in. Data Rejected");
+},
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -95,12 +124,49 @@ const resolvers = {
           website: website,
           password: password,
         });
+ develop
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { passwords: delPassword._id } }
+        );
+ feature/addreadme
+      updatePassword: async (
+      parent,
+      { _id, category, website, password },
+      context
+    ) => {
+      if (context.user) {
+        return await Passwords.findOneAndUpdate(
+          _id,
+          {
+            category: category,
+            website: website,
+            password: password,
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("Not logged in!");
+    },
+    deletePassword: async (
+      parent,
+      { _id, category, website, password },
+      context
+    ) => {
+      if (context.user) {
+        const delPassword = await Passwords.findOneAndDelete(_id, {
+          category: category,
+          website: website,
+          password: password,
+        });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { passwords: delPassword._id } }
         );
 
+ develop
         return delPassword;
       }
       throw new AuthenticationError("Not logged in!");
@@ -126,3 +192,4 @@ const resolvers = {
 };
 
 module.exports = resolvers;
+
