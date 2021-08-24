@@ -67,13 +67,16 @@ Then type in git add . and hit enter, this will add all the files to the staging
 Commit the changes by git commit -m "<message-describing-your-change>" and hit enter.
 Now push your branch to your fork by git push origin <your-branch-name> or git push and hit enter.
 
-### 📌 Creating a pull request : 
-By this time you can see a message on your GitHub fork as your fork is ahead of rockingrohit9639: master by <number> of commits and you can also see a button Compare and pull request.
-Click on Compare and pull request button
-Fill the form completely by describing your change, cause of change, issue getting fixed etc.
-After filling the form completely click on Create Pull request
+
+### Setting up Client and Servers :
+
+USER can setup both client and server servers by using the npm run install command at the root directory
+
+```sh
+npm run install
+```
   
-Then your work is done. Thank you for your submissions. I will review your code and merge it.
+
 
 
 ### Contributers :
