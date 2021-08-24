@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-
 import { ADD_PASSWORD } from "../utils/mutations";
+
 
 import Auth from "../utils/auth";
 
 const formDiv = {
-  backgroundColor: "#3F51B5",
+  // backgroundColor: "#3F51B5",
   borderRadius: "100px 100px 100px 100px",
+  marginTop: '20px',
   paddingBottom: "80px",
 };
 
 const Form = {
   display: "flex",
   justifyContent: "space-evenly",
-  // flexDirection: 'row'
 };
 
 const inputField = {
   backgroundColor: "#eeeee4",
-  color: "white",
   padding: "10px",
   width: "200px",
   borderRadius: "10px 10px 10px 10px",
@@ -28,8 +27,6 @@ const inputField = {
 
 const btn = {
   backgroundColor: "#03fcad",
-  // padding: '10px',
-  // margin: '5px',
   width: "100px",
   borderRadius: "10px 10px 10px 10px",
 };
@@ -70,6 +67,12 @@ const dashBtn = {
   fontSize: "20px",
 };
 
+const pText = {
+  display: 'flex',
+  justifyContent: 'center',
+  color: 'white'
+}
+
 const CreatePassword = ({ _id }) => {
   const [password, setPassword] = useState("");
   const [website, setWebsite] = useState("");
@@ -92,11 +95,11 @@ const CreatePassword = ({ _id }) => {
   };
 
   return (
-    <div style={formDiv}>
+    <div className='formDiv' style={formDiv}>
       <h4 style={Header}>Create Password</h4>
       {Auth.loggedIn() ? (
-        <form style={Form} onSubmit={handleFormSubmit}>
-          <div style={Color}>
+        <form className='Form' style={Form} onSubmit={handleFormSubmit}>
+          <div className='Color' style={Color}>
             website:
             <input
               style={inputField}
@@ -106,7 +109,7 @@ const CreatePassword = ({ _id }) => {
               onChange={(event) => setWebsite(event.target.value)}
             />
           </div>
-          <div style={Color}>
+          <div className='Color' style={Color}>
             Create Password:
             <input
               style={inputField}
@@ -116,25 +119,15 @@ const CreatePassword = ({ _id }) => {
               onChange={(event) => setPassword(event.target.value)}
             />
           </div>
-          <button style={btn} type="submit">
+          <button className="btn" style={btn} type="submit">
             Submit
           </button>
           {error && <div>{error.message}</div>}
 
-          {/* <div>
-                <button style={DeleteBtn} >Delete</button>
-              </div> */}
-
-          {/* {error && (
-                  <div >
-                    {error.message}
-                  </div>
-                )} */}
         </form>
       ) : (
-        <p>
-          You need to be logged in to endorse skills. Please{" "}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+        <p style={pText}>
+          You need to be logged in to create a password.
         </p>
       )}
 
