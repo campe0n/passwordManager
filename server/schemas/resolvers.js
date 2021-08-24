@@ -21,8 +21,8 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in!");
     },
-    password: async (parent, { passwordId }) => {
-      return Passwords.findOne({ _id: passwordId });
+    password: async (parent, { _id }) => {
+      return Passwords.findOne({ _id: _id });
     },
   },
   Mutation: {
