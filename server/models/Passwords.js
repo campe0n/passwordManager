@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const passwordsSchema = new Schema({
   category: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
   },
   website: {
