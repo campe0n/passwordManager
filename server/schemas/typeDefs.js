@@ -53,14 +53,12 @@ const typeDefs = gql`
 
     updatePassword(
       _id: ID
-      category: String!
       website: String!
       password: String!
     ): Password
 
     deletePassword(
       _id: ID
-      category: String!
       website: String!
       password: String!
     ): Password
