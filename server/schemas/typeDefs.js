@@ -74,7 +74,6 @@ develop
 
     updatePassword(
       _id: ID
-      category: String!
       website: String!
       password: String!
     ): Password
@@ -82,7 +81,6 @@ develop
  develop
     deletePassword(
       _id: ID
-      category: String!
       website: String!
       password: String!
     ): Password

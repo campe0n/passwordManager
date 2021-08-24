@@ -46,7 +46,7 @@ const DeleteBtn = {
   padding: "10px",
   width: "150px",
   borderRadius: "10px 10px 10px 10px",
-  backgroundColor: "#fc2803",
+  // backgroundColor: "#fc2803",
   marginTop: "20px",
 };
 
@@ -121,9 +121,9 @@ const CreatePassword = ({ _id }) => {
           </button>
           {error && <div>{error.message}</div>}
 
-          {/* <div>
+          <div>
                 <button style={DeleteBtn} >Delete</button>
-              </div> */}
+              </div>
 
           {/* {error && (
                   <div >
