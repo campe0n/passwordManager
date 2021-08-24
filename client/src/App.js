@@ -46,11 +46,7 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router>
-<<<<<<< HEAD
-      <Header />
-=======
         <Header />
->>>>>>> develop
         <Container component="main">
           <div className="container">
             <Route exact path="/dashboard">
