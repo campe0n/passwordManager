@@ -45,25 +45,11 @@ const typeDefs = gql`
 
     login(email: String!, password: String!): Auth
 
-    addPassword(
-      _id: ID
-      website: String!
-      password: String!
-    ): Password
+    addPassword(_id: ID, website: String!, password: String!): Password
 
-    updatePassword(
-      _id: ID
-      category: String!
-      website: String!
-      password: String!
-    ): Password
+    updatePassword(_id: ID, website: String!, password: String!): Password
 
-    deletePassword(
-      _id: ID
-      category: String!
-      website: String!
-      password: String!
-    ): Password
+    deletePassword(_id: ID, website: String!, password: String!): Password
   }
 `;
 
