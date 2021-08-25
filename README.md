@@ -1,9 +1,17 @@
 # Password Manager 
 
 This is a Password Manager project created using the MERN stack.
-You can login and save your passwords and list them under "user-set" categories. Passwords are saved in the database use mongoDB.
+You can login and save your passwords and list them under a "user-set" categories. Passwords are saved in the database use mongoDB.
 
 After 1 hour the user will be automatically logged out and upon refreshing the page the use will be redirected to the login page.
+
+### DEPLOYABLE LINK VIA HEROKU
+
+https://amigos-passwordmanager.herokuapp.com/
+
+### SCREENSHOT 
+![Main page.](./home.png)
+
 
 <a id="setting">
 <h2>Setting up the project</h2>
@@ -31,7 +39,7 @@ Now, the server will be up and running
 
 **Note :- You have to configure all the environment variables by creating a config.env file in root server folder.
 
-Structure of the config.env file
+Structure of the .env file
 
 ```js
 TOKEN_SECRET=<desired secret>
@@ -81,11 +89,10 @@ npm run install
 
 ### Contributers :
 
-Melvin Finn // https://github.com/campe0n
+Melvin Finn // https://github.com/campe0n // https://github.com/campe0n/passwordManager
 
-Christopher Sayegh  // https://github.com/csayegh123
+Christopher Sayegh  // https://github.com/csayegh123 // https://github.com/Csayegh123/passwordManager
 
-Abdale Hassan // https://github.com/Abdale88/
+Abdale Hassan // https://github.com/Abdale88/ // https://github.com/Abdale88/passwordManager
 
-Jose Orozco // https://github.com/Jose8160
-
+Jose Orozco // https://github.com/Jose8160 // https://github.com/Jose8160/passwordManger
