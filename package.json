@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.x",
+    "npm": "7.x"
+  },
   "scripts": {
     "start": "node server/index.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
