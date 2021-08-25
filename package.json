@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+
+  "engines": {
+    "node": "12.x",
+    "npm": "7.x"
+  },
   "scripts": {
     "start": "node server/index.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
@@ -21,7 +26,8 @@
   },
   "homepage": "https://github.com/campe0n/passwordManager#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "concurrently": "^6.2.1",
-    "graphql": "^15.5.1"
+    "send": "^0.17.1"
   }
 }

@@ -21,8 +21,17 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in!");
     },
-    password: async (parent, { passwordId }) => {
-      return Passwords.findOne({ _id: passwordId });
+    password: async (parent, { _id }, context) => {
+      if (context.user) {
+        return Passwords.findOne({ _id });
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
   Mutation: {
@@ -41,19 +50,20 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    addPassword: async (parent, { website, password }, context) => {
+    addPassword: async (parent, { _id, website, password }, context) => {
       if (context.user) {
-        //, create a password object
         const newPassword = await Passwords.create({
           website: website,
           password: password,
         });
-        //, get saved password object
-        //, find an update.userbyId, push password_id into passwords
-        await User.findOneAndUpdate(context.user._id, {
-          $push: { passwords: newPassword },
-        });
-        //, return new password object
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $push: { passwords: newPassword._id },
+          }
+        );
+
         return newPassword;
       }
 
@@ -93,8 +103,6 @@ const resolvers = {
           { _id: context.user._id },
           { $pull: { passwords: delPassword._id } }
         );
-
-        return delPassword;
       }
       throw new AuthenticationError("Not logged in!");
     },
