@@ -21,14 +21,11 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in!");
     },
-    password: async (parent, { passwordId }) => {
-      return Passwords.findOne({ _id: passwordId });
-    },
-    passwords: async (parent, args, context) => {
+    password: async (parent, { _id }, context) => {
       if (context.user) {
-        return await Passwords.find();
+        return Passwords.findOne({ _id });
       }
-      throw new AuthenticationError("Not logged in!");
+      throw new AuthenticationError("Not logged in");
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -59,7 +56,7 @@ const resolvers = {
           website: website,
           password: password,
         });
-      
+
         await User.findOneAndUpdate(
           { _id: context.user._id },
           {
@@ -130,4 +127,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-
