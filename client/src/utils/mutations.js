@@ -33,4 +33,24 @@ export const ADD_PASSWORD = gql `
          password
      }
    }
-   `
+   `;
+
+
+export const UPDATE_PASSWORD = gql `
+   mutation updatePassword($website: String!, $password: String!){
+     updatePassword(website: $website, password: $password) {
+         website
+         password
+     }
+   }
+   `;
+
+
+   export const DELETE_PASSWORD = gql `
+   mutation deletePassword($website: String!, $password: String!){
+     deletePassword(website: $website, password: $password) {
+         website
+         password
+     }
+   }
+   `;

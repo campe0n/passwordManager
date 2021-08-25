@@ -11,6 +11,7 @@ const formDiv = {
   borderRadius: "100px 100px 100px 100px",
   marginTop: '20px',
   paddingBottom: "80px",
+  margin: "20px"
 };
 
 const Form = {
@@ -43,7 +44,7 @@ const DeleteBtn = {
   padding: "10px",
   width: "150px",
   borderRadius: "10px 10px 10px 10px",
-  backgroundColor: "#fc2803",
+  // backgroundColor: "#fc2803",
   marginTop: "20px",
 };
 
@@ -99,7 +100,7 @@ const CreatePassword = ({ _id }) => {
       <h4 style={Header}>Create Password</h4>
       {Auth.loggedIn() ? (
         <form className='Form' style={Form} onSubmit={handleFormSubmit}>
-          <div className='Color' style={Color}>
+          <div className="Color" style={Color}>
             website:
             <input
               style={inputField}
@@ -109,7 +110,7 @@ const CreatePassword = ({ _id }) => {
               onChange={(event) => setWebsite(event.target.value)}
             />
           </div>
-          <div className='Color' style={Color}>
+          <div className="Color" style={Color}>
             Create Password:
             <input
               style={inputField}
@@ -124,6 +125,13 @@ const CreatePassword = ({ _id }) => {
           </button>
           {error && <div>{error.message}</div>}
 
+      
+
+          {/* {error && (
+                  <div >
+                    {error.message}
+                  </div>
+                )} */}
         </form>
       ) : (
         <p style={pText}>

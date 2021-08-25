@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 
@@ -59,9 +59,12 @@ const Header = () => {
       <h1 style={title}>Password Manager</h1>
       <div style={divBtn}>
         {Auth.loggedIn() ? (
+          <div>
+          <Redirect to="/dashboard" />
           <button style={logoutBtn} onClick={logout}>
             Logout
           </button>
+          </div>
         ) : (
           <>
             <button style={btn}>

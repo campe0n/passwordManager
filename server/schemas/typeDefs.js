@@ -24,7 +24,7 @@ const typeDefs = gql`
   type Query {
     user: User
     passwords: [Password]
-    password: Password
+    password(_id: ID!): Password
     me: User
   }
 
@@ -47,19 +47,9 @@ const typeDefs = gql`
 
     addPassword(_id: ID, website: String!, password: String!): Password
 
-    updatePassword(
-      _id: ID
-      category: String!
-      website: String!
-      password: String!
-    ): Password
+    updatePassword(_id: ID, website: String!, password: String!): Password
 
-    deletePassword(
-      _id: ID
-      category: String!
-      website: String!
-      password: String!
-    ): Password
+    deletePassword(_id: ID, website: String!, password: String!): Password
   }
 `;
 

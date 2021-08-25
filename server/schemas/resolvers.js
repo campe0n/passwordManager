@@ -21,8 +21,11 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in!");
     },
-    password: async (parent, { passwordId }) => {
-      return Passwords.findOne({ _id: passwordId });
+    password: async (parent, { _id }, context) => {
+      if (context.user) {
+        return Passwords.findOne({ _id });
+      }
+      throw new AuthenticationError("Not logged in");
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -100,8 +103,6 @@ const resolvers = {
           { _id: context.user._id },
           { $pull: { passwords: delPassword._id } }
         );
-
-        return delPassword;
       }
       throw new AuthenticationError("Not logged in!");
     },
