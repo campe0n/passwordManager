@@ -1,7 +1,7 @@
 # Password Manager 
 
 This is a Password Manager project created using the MERN stack.
-You can login and save your passwords and list them under "user-set" categories. Passwords are saved in the database use mongoDB.
+You can login and save your passwords and list them under a "user-set" categories. Passwords are saved in the database use mongoDB.
 
 After 1 hour the user will be automatically logged out and upon refreshing the page the use will be redirected to the login page.
 
