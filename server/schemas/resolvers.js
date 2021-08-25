@@ -13,13 +13,25 @@ const resolvers = {
         return user;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in!");
     },
     passwords: async (parent, args, context) => {
       if (context.user) {
         return await Passwords.find();
       }
       throw new AuthenticationError("Not logged in!");
+    },
+    password: async (parent, { _id }, context) => {
+      if (context.user) {
+        return Passwords.findOne({ _id });
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
   Mutation: {
@@ -37,31 +49,27 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
-
     },
-
-    addPassword: async (parent, args, context) => {
-     if (context.user) {
-       //, create a password object
+    addPassword: async (parent, { _id, website, password }, context) => {
+      if (context.user) {
         const newPassword = await Passwords.create({
-          category: category,
           website: website,
           password: password,
         });
-      //, get saved password object
-      //, find an update.userbyId, push password_id into passwords
-        await User.findOneAndUpdate(context.user._id, {
-        $push: { passwords: newPassword },
-      });
-       //, return new password object
-      return newPassword;
-    }
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $push: { passwords: newPassword._id },
+          }
+        );
+
+        return newPassword;
+      }
 
       throw new AuthenticationError("Not logged in. Data Rejected");
-},
-
-
-      updatePassword: async (
+    },
+    updatePassword: async (
       parent,
       { _id, category, website, password },
       context
@@ -95,8 +103,6 @@ const resolvers = {
           { _id: context.user._id },
           { $pull: { passwords: delPassword._id } }
         );
-
-        return delPassword;
       }
       throw new AuthenticationError("Not logged in!");
     },
@@ -121,4 +127,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-

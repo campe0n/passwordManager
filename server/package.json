@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "12.x",
+    "mpm": "7.x"
+  },
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "seed": "node config/seeds.js"
+    "seed": "node config/seeds.js",
+    "build": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +19,7 @@
   "dependencies": {
     "apollo-server-express": "^2.11.0",
     "bcrypt": "^5.0.1",
+    "debug": "^4.3.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
