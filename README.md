@@ -31,7 +31,7 @@ Now, the server will be up and running
 
 **Note :- You have to configure all the environment variables by creating a config.env file in root server folder.
 
-Structure of the config.env file
+Structure of the .env file
 
 ```js
 TOKEN_SECRET=<desired secret>
