@@ -37,7 +37,7 @@ npm run develop
 ```
 Now, the server will be up and running
 
-**Note :- You have to configure all the environment variables by creating a config.env file in root server folder.
+**Note :- You have to configure all the environment variables by creating a .env file in root server folder.
 
 Structure of the .env file
 
